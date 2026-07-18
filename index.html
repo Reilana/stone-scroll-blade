@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stone, Scroll, Blade: A Medieval Duel</title>
+  <meta name="description" content="A medieval-themed Rock Paper Scissors browser game built for WCAG 2.1 AA accessibility. Full keyboard navigation, screen reader support, and immersive theming.">
+  <meta property="og:title" content="Stone, Scroll, Blade: A Medieval Duel">
+  <meta property="og:description" content="A fully accessible medieval Rock Paper Scissors game. First to 5 victories wins the duel.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <!-- Medieval typefaces: Cinzel (display) + Crimson Text (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'med-bg':         '#1a1410',
+            'med-card':       '#f4e4b8',
+            'med-card-dark':  '#e8d49a',
+            'med-ink':        '#1a0e00',
+            'med-ink-muted':  '#4a3728',
+            'med-gold':       '#8a6a00',
+            'med-cream':      '#f0e6c8',
+            'med-focus':      '#c8960a',
+            'med-stone':      '#2d4a6b',
+            'med-stone-hv':   '#1e3550',
+            'med-scroll':     '#1a4d2e',
+            'med-scroll-hv':  '#0f3320',
+            'med-blade':      '#7a1515',
+            'med-blade-hv':   '#5c0f0f',
+            'med-reset':      '#5c3d0a',
+            'med-reset-hv':   '#3d2806',
+          },
+          fontFamily: {
+            display: ['Cinzel', 'Georgia', 'serif'],
+            prose:   ['Crimson Text', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Game-specific styles: result states, skip link, decorative border -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-med-bg text-med-cream font-prose p-4 sm:p-8">
+
+  <a href="#main-content" class="skip-link">Skip to game</a>
+
+  <main id="main-content" tabindex="-1"
+        class="max-w-2xl mx-auto bg-med-card text-med-ink font-prose p-6 rounded-lg shadow-md med-card-frame">
+
+    <h1 class="font-display text-3xl font-bold text-center mb-1 text-med-ink">
+      Stone, Scroll, Blade
+    </h1>
+    <p class="text-center text-med-gold font-display text-sm tracking-widest mb-4" aria-hidden="true">
+      ⚔ &nbsp; A Medieval Duel &nbsp; ⚔
+    </p>
+
+
+    <!-- Single sr-only live region — all screen reader announcements go here -->
+    <div id="game-result" aria-live="assertive" aria-atomic="true" class="sr-only"></div>
+
+    <!-- Score board -->
+    <div class="flex justify-between mb-8 text-xl font-semibold border-b-2 border-med-card-dark pb-4 text-med-ink"
+         role="region" aria-label="Score">
+      <p>Player: <span id="score-player">0</span></p>
+      <p>Computer: <span id="score-computer">0</span></p>
+    </div>
+
+    <!-- Move selection -->
+    <fieldset class="text-center">
+      <legend class="font-display text-med-gold text-lg font-bold mb-4">
+        Choose thy weapon, first to 5 victories wins the duel
+      </legend>
+
+      <div class="flex flex-wrap justify-center gap-4 mt-2">
+        <button type="button" id="btn-rock"
+                class="game-btn px-6 py-3 bg-med-stone hover:bg-med-stone-hv text-white font-display rounded
+                       focus:outline-none focus:ring-4 focus:ring-med-focus focus:ring-offset-2 transition">
+          <span aria-hidden="true">✊ </span>Stone
+        </button>
+        <button type="button" id="btn-paper"
+                class="game-btn px-6 py-3 bg-med-scroll hover:bg-med-scroll-hv text-white font-display rounded
+                       focus:outline-none focus:ring-4 focus:ring-med-focus focus:ring-offset-2 transition">
+          <span aria-hidden="true">📜 </span>Scroll
+        </button>
+        <button type="button" id="btn-scissors"
+                class="game-btn px-6 py-3 bg-med-blade hover:bg-med-blade-hv text-white font-display rounded
+                       focus:outline-none focus:ring-4 focus:ring-med-focus focus:ring-offset-2 transition">
+          <span aria-hidden="true">⚔️ </span>Blade
+        </button>
+      </div>
+    </fieldset>
+
+    <!-- Computer's last pick — visual only; sr-only region handles AT announcements -->
+    <p id="computer-choice" class="text-center text-med-ink-muted mt-4 min-h-[1.5rem] text-sm italic"
+       aria-hidden="true"></p>
+
+    <!-- Round result — color-coded by JS-toggled classes -->
+    <div id="round-result"
+         class="result-box mt-2 text-center font-display text-lg font-bold min-h-[2rem] rounded-md py-2 px-4">
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="button" id="btn-reset"
+              class="hidden px-6 py-3 bg-med-reset hover:bg-med-reset-hv text-white font-display rounded
+                     focus:outline-none focus:ring-4 focus:ring-med-focus focus:ring-offset-2 transition"
+              aria-label="Play again. Start a new duel.">
+        <span aria-hidden="true">⚔ </span>To Battle!
+      </button>
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
