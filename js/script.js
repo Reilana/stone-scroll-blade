@@ -1,4 +1,4 @@
-// Score tracking — persists across rounds until the game is reset
+// Score tracking: persists across rounds until the game is reset
 let scorePlayer = 0;
 let scoreComputer = 0;
 
@@ -13,7 +13,7 @@ const computerChoiceEl = document.querySelector("#computer-choice");  // visible
 const scorePlayerSpan  = document.querySelector("#score-player");
 const scoreComputerSpan = document.querySelector("#score-computer");
 
-// Shape symbols shown in the visible result box — give colorblind users a
+// Shape symbols shown in the visible result box: give colorblind users a
 // non-color cue (shape) to distinguish win/lose/tie at a glance.
 // These are NOT added to the sr-only gameResult region; the text there is
 // already fully descriptive without them.
@@ -34,7 +34,7 @@ function displayName(move) {
   return DISPLAY[move].label;
 }
 
-// Returns "win", "lose", or "tie" — used to set color class and build messages
+// Returns "win", "lose", or "tie": used to set color class and build messages
 function playRound(player, computer) {
   if (player === computer) return "tie";
   if (
@@ -61,7 +61,7 @@ function setResultClass(state) {
   if (state) roundResult.classList.add(`result-${state}`);
 }
 
-// Medieval battle round messages — each is a function(playerMove, computerMove) => string
+// Medieval battle round messages: each is a function(playerMove, computerMove) => string
 const WIN_LINES = [
   (p, c) => `Victory! Thy ${displayName(p)} hath shattered the ${displayName(c)}!`,
   (p, c) => `The ${displayName(c)} crumbles before thy ${displayName(p)}! Thou art triumphant!`,
@@ -106,7 +106,7 @@ function handleClick(playerSelection) {
   scorePlayerSpan.textContent   = scorePlayer;
   scoreComputerSpan.textContent = scoreComputer;
   roundResult.textContent = RESULT_SYMBOL[outcome] + message;
-  // Single authoritative announcement for screen readers (no symbol prefix — text is already descriptive)
+  // Single authoritative announcement for screen readers (no symbol prefix, text is already descriptive)
   gameResult.textContent =
     `${message} Score: Player ${scorePlayer}, Computer ${scoreComputer}.`;
 
