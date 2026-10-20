@@ -176,6 +176,13 @@ kbd {
   .border-med-card-dark {
     border-color: #4a3010 !important;
   }
+
+  /* Text colours inside the card: the light-mode inks are too dark on leather.
+     "main" in front makes these win over the Tailwind utility classes.
+     Cream #f0e6c8 on #2a1e10 = 13.1:1, parchment #d8c8a0 = 9.8:1, gold #c8960a = 6.1:1 */
+  main .text-med-ink       { color: #f0e6c8; }
+  main .text-med-ink-muted { color: #d8c8a0; }
+  main .text-med-gold      { color: #c8960a; }
 }
 
 /* ============================================
