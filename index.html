@@ -11,40 +11,10 @@
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
   <!-- Medieval typefaces: Cinzel (display) + Crimson Text (body) -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'med-bg':         '#1a1410',
-            'med-card':       '#f4e4b8',
-            'med-card-dark':  '#e8d49a',
-            'med-ink':        '#1a0e00',
-            'med-ink-muted':  '#4a3728',
-            'med-gold':       '#785a00',
-            'med-cream':      '#f0e6c8',
-            'med-focus':      '#c8960a',
-            'med-stone':      '#2d4a6b',
-            'med-stone-hv':   '#1e3550',
-            'med-scroll':     '#1a4d2e',
-            'med-scroll-hv':  '#0f3320',
-            'med-blade':      '#7a1515',
-            'med-blade-hv':   '#5c0f0f',
-            'med-reset':      '#5c3d0a',
-            'med-reset-hv':   '#3d2806',
-          },
-          fontFamily: {
-            display: ['Cinzel', 'Georgia', 'serif'],
-            prose:   ['Crimson Text', 'Georgia', 'serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Tailwind, compiled ahead of time (npm run build:css:rps); config in tailwind.rps.config.js -->
+  <link rel="stylesheet" href="css/tailwind.css?v=202610202320">
   <!-- Game-specific styles: result states, skip link, decorative border -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=202610202320">
 </head>
 <body class="bg-med-bg text-med-cream font-prose p-4 sm:p-8">
 
@@ -109,12 +79,12 @@
       <button type="button" id="btn-reset"
               class="hidden px-6 py-3 bg-med-reset hover:bg-med-reset-hv text-white font-display rounded
                      focus:outline-none focus:ring-4 focus:ring-med-focus focus:ring-offset-2 transition"
-              aria-label="Play again. Start a new duel.">
+              aria-label="To Battle! Start a new duel.">
         <span aria-hidden="true">⚔ </span>To Battle!
       </button>
     </div>
   </main>
 
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=202610202320"></script>
 </body>
 </html>
